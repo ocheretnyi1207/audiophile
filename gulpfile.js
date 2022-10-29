@@ -52,8 +52,10 @@ gulp.task("css", () => {
 
     gulp.watch("#src/pug/**/*.pug", gulp.series("pug", "refresh"));
     gulp.watch("#src/sass/**/*.sass", gulp.series("css", "refresh"));
-    gulp.watch("#src/{img,fonts}/", gulp.series("copy"));
-    gulp.watch("#src/{img,fonts}/").on("change", browsersync.reload);
+    gulp.watch("#src/img/**/*.{jpeg,jpg,png,svg}", gulp.series("copy"));
+    gulp.watch("#src/fonts/**/*.{woff2,woff}", gulp.series("copy"));
+    gulp.watch("#src/img/**/*.{jpeg,jpg,png,svg}").on("change", browsersync.reload);
+    gulp.watch("#src/fonts/**/*.{woff2,woff}").on("change", browsersync.reload);
   });
 
   gulp.task("refresh", (done) => {
